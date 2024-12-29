@@ -17,7 +17,6 @@ class AddressBook(UserDict):
             contact = dict()
             contact[name] = [phone.value for phone in record.phones]
             contact_list.append(contact)
-
         return contact_list
 
     def delete(self, name):

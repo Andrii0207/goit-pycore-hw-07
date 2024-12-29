@@ -1,11 +1,13 @@
 from models.name import Name
 from models.phone import Phone
+from models.birthday import Birthday
 
 
 class Record:
     def __init__(self, name):
         self.name = Name(name)
         self.phones = []
+        self.birthday = None
 
     def add_phone(self, phone):
         self.phones.append(Phone(phone))
@@ -30,5 +32,12 @@ class Record:
         return next(
             (phone for phone in self.phones if phone.value == searched_phone), None)
 
+    def add_birthday(self, birthday):
+        print("self: ", self)
+        self.birthday = Birthday(birthday)
+
     def __str__(self):
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+        if self.birthday == None:
+            return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+        else:
+            return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}, birthday: {self.birthday.value}"

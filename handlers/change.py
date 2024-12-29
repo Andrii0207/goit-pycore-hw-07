@@ -8,10 +8,10 @@ def change_contact(args, address_book):
     record = address_book.find_record(name)
 
     if not record:
-        raise KeyError("f{name} doesn't exist in contacts")
+        raise KeyError(f"{name} doesn't exist in contacts")
 
     if not record.find_phone(old_phone):
-        raise ValueError("f{old_phone} doesn't exist in {name}")
+        raise ValueError(f"{old_phone} doesn't exist in {name}")
 
     record.edit_phone(old_phone, new_phone)
 

@@ -8,6 +8,6 @@ def show_phone(args, address_book):
     record = address_book.find_record(name)
 
     if not record:
-        raise KeyError("f{name} doesn't exist in contacts")
+        raise KeyError(f"{name} doesn't exist in contacts")
 
     return record
