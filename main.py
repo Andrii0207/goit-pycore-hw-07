@@ -1,5 +1,5 @@
 from parser import parse_input
-from handlers import add, all_contacts, change, remove, show, delete, remove, add_birthday
+from handlers import add, all_contacts, change, remove, show, delete, remove, add_birthday, show_birthday, birthdays
 from models.address_book import AddressBook
 from models.record import Record
 
@@ -53,6 +53,12 @@ def main():
 
         elif command == "add-birthday":
             print(add_birthday.add_birthday(args, contacts_book))
+
+        elif command == "show-birthday":
+            print(show_birthday.show_birthday(args, contacts_book))
+
+        elif command == "birthdays":
+            print(birthdays.birthdays(args, contacts_book))
 
         else:
             print("Invalid command.")

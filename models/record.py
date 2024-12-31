@@ -36,6 +36,11 @@ class Record:
         print("self: ", self)
         self.birthday = Birthday(birthday)
 
+    def show_birthday(self):
+        if self.birthday is None:
+            return (f"{self.name.value}'s birthday is doesn't in contacts")
+        return (f"{self.name.value}'s birthday is {self.birthday.value}")
+
     def __str__(self):
         if self.birthday == None:
             return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
