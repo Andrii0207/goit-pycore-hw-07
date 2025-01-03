@@ -1,4 +1,5 @@
 from collections import UserDict
+from datetime import datetime, timedelta
 
 
 class AddressBook(UserDict):
@@ -27,3 +28,39 @@ class AddressBook(UserDict):
         print("remove_phone: ", deleted_phone)
         # next(
         #     (phone for phone in self.phones if phone.value == deleted_phone), None)
+
+    def get_upcoming_birthdays(self):
+
+        congratulation_list = []
+        current_date = datetime.today().date()
+
+        for _, record in self.data.items():
+            birthday = record.birthday
+
+            if birthday == None:
+                continue
+
+            date = birthday.value
+
+            comparing_year = current_date.year
+
+            if (date.month, date.day) < (current_date.month, current_date.day):
+                comparing_year = current_date.year + 1
+
+            comparing_date = datetime(
+                comparing_year, date.month, date.day).date()
+
+            if comparing_date < current_date or comparing_date >= current_date + timedelta(days=7):
+                continue
+
+            congrats_date = comparing_date
+
+            if comparing_date.weekday() == 5:
+                congrats_date = comparing_date + timedelta(days=2)
+            elif comparing_date.weekday() == 6:
+                congrats_date = comparing_date + timedelta(days=1)
+
+            congratulation_list.append(
+                {"name": record.name.value, "birthday_date": str(date), 'congratulation_date': congrats_date.strftime("%d.%m.%Y")})
+
+        return sorted(congratulation_list, key=lambda elem: elem["congratulation_date"])

@@ -9,11 +9,9 @@ class Birthday(Field):
             if type(value) != str:
                 raise TypeError()
 
-            print("birthday before: ", value)
             datetime_birthday = datetime.strptime(value, "%d.%m.%Y").date()
 
             super().__init__(datetime_birthday)
-            print("birthday after: ", datetime_birthday)
 
         except ValueError:
             raise ValueError("Invalid date format. Use DD.MM.YYYY")

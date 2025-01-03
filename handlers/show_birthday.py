@@ -7,8 +7,6 @@ def show_birthday(args, address_book):
 
     record = address_book.find_record(name)
 
-    print("record >", record)
-
     if not record:
         raise KeyError(f"{name} doesn't exist in contacts")
 

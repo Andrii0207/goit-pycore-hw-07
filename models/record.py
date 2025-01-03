@@ -33,7 +33,6 @@ class Record:
             (phone for phone in self.phones if phone.value == searched_phone), None)
 
     def add_birthday(self, birthday):
-        print("self: ", self)
         self.birthday = Birthday(birthday)
 
     def show_birthday(self):
@@ -42,7 +41,4 @@ class Record:
         return (f"{self.name.value}'s birthday is {self.birthday.value}")
 
     def __str__(self):
-        if self.birthday == None:
-            return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
-        else:
-            return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}, birthday: {self.birthday.value}"
+        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"

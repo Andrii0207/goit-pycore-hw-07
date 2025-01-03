@@ -11,14 +11,17 @@ def main():
     record1_init.add_phone("1234567890")
     record1_init.add_phone("5555555555")
     record1_init.add_phone("1122334455")
+    record1_init.add_birthday("04.01.2002")
     contacts_book.add_record(record1_init)
 
     record2_init = Record("Jane")
     record2_init.add_phone("9876543210")
+    record2_init.add_birthday("23.04.1994")
     contacts_book.add_record(record2_init)
 
     record3_init = Record("Sarah")
     record3_init.add_phone("0987654321")
+    record3_init.add_birthday("05.01.2020")
     contacts_book.add_record(record3_init)
 
     print("Welcome to the assistant bot!")
@@ -58,7 +61,7 @@ def main():
             print(show_birthday.show_birthday(args, contacts_book))
 
         elif command == "birthdays":
-            print(birthdays.birthdays(args, contacts_book))
+            print(birthdays.birthdays(contacts_book))
 
         else:
             print("Invalid command.")
